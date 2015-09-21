@@ -63,6 +63,11 @@ s8 	loadData(Handle *sdHandle, FS_archive *sdArchive)
   loadLines(tmp, pkData.items[0], 17, bytesRead);
   printf(" OK\n");
 
+  printf("Loading ball names...");
+  ret = loadFile("/3ds/PCHex/data/text/text_Balls_en.txt", tmp, sdArchive, sdHandle, 12000, &bytesRead);
+  if (ret) { printf("loading failed : error code %ld\n", ret); return ret; }
+  loadLines(tmp, pkData.balls[0], 13, bytesRead);
+  printf(" OK\n");
   return 0;
 }
 
@@ -84,6 +89,7 @@ void 	waitKey(u32 keyWait)
 int 	main()
 {
   u8 	*save = NULL;
+  s32	fs;
   PrintConsole 	top, bot;
   Handle sdHandle, saveHandle;
   FS_archive sdArchive, saveArchive;
@@ -95,8 +101,9 @@ int 	main()
   srand(svcGetSystemTick());
 
   printf("Init Filesystem...\n");
-  if (filesysInit(&sdHandle, &saveHandle, &sdArchive, &saveArchive))
-  { printf("Init FS Failed\n"); goto end;}
+  fs = filesysInit(&sdHandle, &saveHandle, &sdArchive, &saveArchive);
+  if (fs)
+    printf("Init FS Failed\n");
   else
     printf("Init FS OK\n");
 
@@ -104,7 +111,11 @@ int 	main()
     goto end;
 
   save = (u8 *) malloc(0xEB000);
-  s8 game = loadSave(save, &saveHandle, &saveArchive);
+  s8 game;
+  if (fs)
+    game = loadSave(save, &sdHandle, &sdArchive);
+  else;
+    game = loadSave(save, &saveHandle, &saveArchive);
   s32 ret = 0;
 
   if (game >= 0)
