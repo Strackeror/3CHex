@@ -203,7 +203,7 @@ s16	overlayGetpkm()
   struct s_overlay 	over;
   char			tmp[12];
 
-  strcpy(over.list, "abcdefghijkmnopqrstuvwxyz' ");
+  strcpy(over.list, "abcdefghijklmnopqrstuvwxyz' ");
   strcpy(over.title, "Choose a pokemon");
   over.dst = tmp;
   over.maxlen = 12;
@@ -227,7 +227,7 @@ s16	overlayGetMove()
   struct s_overlay 	over;
   char			tmp[12];
 
-  strcpy(over.list, "abcdefghijkmnopqrstuvwxyz- ");
+  strcpy(over.list, "abcdefghijklmnopqrstuvwxyz- ");
   strcpy(over.title, "Choose a move");
   over.dst = tmp;
   over.maxlen = 12;
@@ -251,7 +251,7 @@ s16	overlayGetAbility()
   struct s_overlay 	over;
   char			tmp[12];
 
-  strcpy(over.list, "abcdefghijkmnopqrstuvwxyz ");
+  strcpy(over.list, "abcdefghijklmnopqrstuvwxyz ");
   strcpy(over.title, "Choose a move");
   over.dst = tmp;
   over.maxlen = 12;
@@ -275,7 +275,7 @@ s16	overlayGetItems()
   struct s_overlay 	over;
   char			tmp[12];
 
-  strcpy(over.list, "abcdefghijkmnopqrstuvwxyz ");
+  strcpy(over.list, "abcdefghijklmnopqrstuvwxyz ");
   strcpy(over.title, "Choose a move");
   over.dst = tmp;
   over.maxlen = 12;
@@ -299,7 +299,7 @@ s16	overlayGetBalls()
   struct s_overlay 	over;
   char			tmp[12];
 
-  strcpy(over.list, "abcdefghijkmnopqrstuvwxyz ");
+  strcpy(over.list, "abcdefghijklmnopqrstuvwxyz ");
   strcpy(over.title, "Choose a move");
   over.dst = tmp;
   over.maxlen = 12;
