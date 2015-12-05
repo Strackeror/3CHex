@@ -49,12 +49,12 @@ void 	printEditable(struct s_overlay *over)
   printf("%s", over->title);
 
   if (over->dataIndex < 0)
-    printf("\x1B[2;%dH^", over->offs + 1);
+    printf("\x1B[2;%dHv", over->offs + 1);
   printf("\x1B[3;1H%s", over->dst);
   if (over->dataIndex < 0)
   {
     printf("\x1B[2m%c\x1B[0m", over->list[over->index]);
-    printf("\x1B[4;%dHv", over->offs + 1);
+    printf("\x1B[4;%dHʌ", over->offs + 1);
   }
 
   for (int i = 0; i < 10; i++)
