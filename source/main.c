@@ -128,7 +128,8 @@ int 	pchexinit(struct s_pchex *pch)
 
   if (backupSave(pch->save, pch->game, &pch->sd.handle, &pch->sd.arch))
   {
-    printf("Backup Failed, Exiting\n");
+    printf("Backup Failed, Exiting in 10 seconds\n");
+    sleep(10);
     return -1;
   }
   return 0;
@@ -139,7 +140,7 @@ int 	pchexexit(struct s_pchex *pch)
   consoleSelect(&pch->bot);
   consoleClear();
   printf("\x1B[15;2H");
-  printf("Program ended, press A to finish\n");
+  printf("Program ended, press A to return to launcher\n");
   waitKey(KEY_A);
   free(pch->save);
   gfxExit();
